@@ -5,25 +5,28 @@ from airflow.operators.python_operator import PythonOperator
 from datetime import timedelta
 
 default_args = {
-	'owner':'airflow',
-	'depends_on_past':False,
-	'start_date':airflow.utils.dates.days_ago(1),
-	'retries':1,
+    'owner':'airflow',
+    'depends_on_past':False,
+    'start_date':airflow.utils.dates.days_ago(1),
+    'retries':1,
 }
 
 #dag
 dag = DAG(
-	'airflow_case1_dag',
-	default_args=default_args,
-	description='airflow_case1 DAG',
-	#schedule_interval=timedelta(days=1))
-	schedule_interval="30 6 * * *")
+    'airflow_case1_dag',
+    default_args=default_args,
+    description='airflow_case1 DAG',
+    #schedule_interval=timedelta(days=1))
+    schedule_interval="30 6 * * *")
 
 #-------------------------------------------------------------------------------
 # first operator
 
 init_task_command='''
-	/home/docker/airflow_case1/shellscript/init.sh
+	ssh -Tq localhost << eeooff
+		/home/docker/airflow_case1/shellscript/init.sh
+		exit
+eeooff
 '''
 
 init_operator = BashOperator(
@@ -35,7 +38,10 @@ init_operator = BashOperator(
 # second operator
 
 mkdir_task_command='''
+	ssh -Tq localhost << eeooff
 	/home/docker/airflow_case1/shellscript/mkdir.sh
+	exit
+eeooff
 '''
 
 mkdir_operator = BashOperator(
@@ -47,7 +53,10 @@ mkdir_operator = BashOperator(
 # third operator
 
 put_task_command='''
+	ssh -Tq localhost << eeooff
 	/home/docker/airflow_case1/shellscript/put.sh
+	exit
+eeooff
 '''
 
 put_operator = BashOperator(
@@ -60,7 +69,10 @@ put_operator = BashOperator(
 # fourth operator
 
 pi_task_command='''
+	ssh -Tq localhost << eeooff
 	/home/docker/airflow_case1/shellscript/pijob.sh
+	exit
+eeooff
 '''
 
 pi_operator = BashOperator(
