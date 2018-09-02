@@ -7,9 +7,15 @@
 进行CDH集群keytab的init、HDFS文件目录的创建、本地文件上传HDFS及一个mapreduce作业的执行（pi）。
 
 ![DAG task执行前](https://github.com/ypang2017/AirflowCases/tree/master/docker/airflow_case1/DAG1.png)
+<<<<<<< HEAD
 
 <img src="https://github.com/ypang2017/AirflowCases/tree/master/docker/airflow_case1/DAG1.png" />
 
 ![DAG task执行后](https://github.com/ypang2017/AirflowCases/tree/master/docker/airflow_case1/DAG2.png)
 
 <img src="https://github.com/ypang2017/AirflowCases/tree/master/docker/airflow_case1/DAG2.png" />
+=======
+<img src="https://github.com/ypang2017/ShellUtil/tree/master/DockerUtil/DAG1.png" />
+![DAG task执行后](https://github.com/ypang2017/AirflowCases/tree/master/docker/airflow_case1/DAG2.png)
+<img src="https://github.com/ypang2017/ShellUtil/tree/master/DockerUtil/DAG2.png" />
+>>>>>>> 9eda4da126b6dee00d9ff4b4d0772af027e4806b
